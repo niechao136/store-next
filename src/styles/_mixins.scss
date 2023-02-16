@@ -1,0 +1,1076 @@
+// button
+@mixin text-button($normal, $hover, $active, $disable) {
+    background-color: transparent;
+    border: none;
+    color: $normal;
+
+    .btn-icon {
+        & > div {
+            background-color: $normal;
+        }
+    }
+
+    &:hover {
+        color: $hover;
+
+        .btn-icon {
+            & > div {
+                background-color: $hover;
+            }
+        }
+    }
+
+    &:active {
+        color: $active;
+
+        .btn-icon {
+            & > div {
+                background-color: $active;
+            }
+        }
+    }
+
+    &:disabled {
+        color: $disable;
+        cursor: not-allowed;
+
+        .btn-icon {
+            & > div {
+                background-color: $disable;
+            }
+        }
+    }
+}
+
+@mixin outline-button($normal, $hover, $active, $disable) {
+    background-color: var(--color-white);
+    border: 1px solid $normal;
+    color: $normal;
+
+    .btn-icon {
+        & > div {
+            background-color: $normal;
+        }
+    }
+
+    &:hover {
+        border: 1px solid $hover;
+        color: $hover;
+
+        .btn-icon {
+            & > div {
+                background-color: $hover;
+            }
+        }
+    }
+
+    &:active {
+        border: 1px solid $active;
+        color: $active;
+
+        .btn-icon {
+            & > div {
+                background-color: $active;
+            }
+        }
+    }
+
+    &:disabled {
+        border: 1px solid $disable;
+        color: $disable;
+        cursor: not-allowed;
+
+        .btn-icon {
+            & > div {
+                background-color: $disable;
+            }
+        }
+    }
+}
+
+@mixin filled-button($normal, $hover, $active, $disable) {
+    background-color: $normal;
+    border: 1px solid $normal;
+    color: var(--color-white);
+
+    .btn-icon {
+        & > div {
+            background-color: var(--color-white);
+        }
+    }
+
+    &:hover {
+        background-color: $hover;
+        border: 1px solid $hover;
+    }
+
+    &:active {
+        background-color: $active;
+        border: 1px solid $active;
+    }
+
+    &:disabled {
+        background-color: $disable;
+        border: 1px solid $disable;
+        cursor: not-allowed;
+    }
+}
+
+// selection radio
+@mixin selection-radio-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    appearance: none;
+}
+
+@mixin selection-radio-label($disabled: enabled) {
+    width: calc(100% - 16px);
+    height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+    color: var(--selection-radio-font-color_normal);
+    margin-left: 8px;
+
+    @if $disabled == disabled {
+        color: var(--selection-radio-font-color_disabled);
+    }
+}
+
+// selection checkbox
+@mixin selection-checkbox-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    appearance: none;
+}
+
+@mixin selection-checkbox-label($disabled: enabled) {
+    width: calc(100% - 16px);
+    height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+    color: var(--selection-checkbox-font-color_normal);
+    margin-left: 8px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @if $disabled == disabled {
+        color: var(--selection-checkbox-font-color_disabled);
+    }
+}
+
+// selection star
+@mixin selection-star-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    appearance: none;
+}
+
+@mixin selection-star-label($disabled: enabled) {
+    width: calc(100% - 24px);
+    height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+    color: var(--selection-star-font-color_normal);
+    margin-left: 8px;
+
+    @if $disabled == disabled {
+        color: var(--selection-star-font-color_disabled);
+    }
+}
+
+// nav
+@mixin nav-icon($mode: expand) {
+    background-color: transparent;
+    width: var(--layout-nav-expand-l1-icon-width);
+    height: var(--layout-nav-expand-l1-icon-height);
+    margin: 0;
+
+    @if $mode == collapse {
+        width: var(--layout-nav-collapse-l1-icon-width);
+        height: var(--layout-nav-collapse-l1-icon-height);
+    }
+}
+
+@mixin nav-title {
+    height: 16px;
+    line-height: 16px;
+    margin-left: 16px;
+    margin-right: 0;
+    overflow: hidden;
+}
+
+// minus nav
+@mixin minus-expand-nav {
+    width: calc(100vw - var(--layout-nav-expand-width));
+    margin-left: var(--layout-nav-expand-width);
+
+    animation-name: minus-expand-nav;
+    animation-duration: 0.3s;
+
+    @keyframes minus-expand-nav {
+        from {
+            width: calc(100vw - var(--layout-nav-collapse-width));
+            margin-left: var(--layout-nav-collapse-width);
+        }
+
+        to {
+            width: calc(100vw - var(--layout-nav-expand-width));
+            margin-left: var(--layout-nav-expand-width);
+        }
+    }
+}
+
+@mixin minus-collapse-nav {
+    width: calc(100vw - var(--layout-nav-collapse-width));
+    margin-left: var(--layout-nav-collapse-width);
+
+    animation-name: minus-collapse-nav;
+    animation-duration: 0.3s;
+
+    @keyframes minus-collapse-nav {
+        from {
+            width: calc(100vw - var(--layout-nav-expand-width));
+            margin-left: var(--layout-nav-expand-width);
+        }
+
+        to {
+            width: calc(100vw - var(--layout-nav-collapse-width));
+            margin-left: var(--layout-nav-collapse-width);
+        }
+    }
+}
+
+// footer
+@mixin footer {
+    box-sizing: border-box;
+    background-color: transparent;
+    padding: 16px 0;
+    margin: 0 32px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    font-size: 12px;
+    color: var(--layout-footer-font-color);
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+}
+
+// scrollbar
+@mixin scrollbar($px) {
+    &::-webkit-scrollbar {
+        width: $px;
+        height: $px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-background-color_track);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-background-color_thumb);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--scrollbar-background-color_thumb-hover);
+    }
+}
+
+// input text
+@mixin input-text($normal, $hover, $active, $disable, $error, $focus, $readonly, $font-color_disable, $font-color_readonly) {
+    &--input {
+        border: 1px solid var(--input-border_normal);
+        color: $normal;
+
+        &__readonly {
+            border: 1px solid var(--input-border_readonly);
+            background-color: $readonly;
+            color: $font-color-readonly;
+        }
+
+        &__disabled {
+            border: 1px solid var(--input-border_disable);
+            background-color: $disable;
+            color: $font-color_disable;
+        }
+
+        &__error {
+            border: 1px solid var(--input-border_error);
+            color: $error;
+        }
+
+        &__has-content {
+            border: 1px solid var(--input-border_active);
+            color: $active;
+        }
+
+        &__focus {
+            border: 1px solid var(--input-border_focus);
+            color: $focus;
+        }
+
+        &__hover {
+            border: 1px solid var(--input-border_hover);
+            color: $hover;
+        }
+    }
+
+    &--tags {
+        background-color: #ffffff;
+        border: 1px solid var(--input-border_normal);
+
+        &__readonly {
+            color: $font-color-readonly;
+            background-color: $readonly;
+            border: 1px solid var(--input-border_readonly);
+        }
+
+        &__disabled {
+            color: $font-color-disable;
+            background-color: $disable;
+            border: 1px solid var(--input-border_disable);
+        }
+
+        &__error {
+            color: $error;
+            border: 1px solid var(--input-border_error);
+        }
+
+        &__has-content {
+            color: $active;
+            border: 1px solid var(--input-border_active);
+        }
+
+        &__focus {
+            color: $focus;
+            border: 1px solid var(--input-border_focus);
+        }
+
+        &__hover {
+            color: $hover;
+            border: 1px solid var(--input-border_hover);
+        }
+    }
+
+    &--tags-content {
+        &--multiple-value {
+            .input-file--tags-content--multiple-value__content,
+            .input-file--tags-content--multiple-value__content-hide,
+            .input-file--tags-content--multiple-value__content-count-hide {
+                & > div {
+                    color: $normal;
+                    background-color: #eaf6ff;
+
+                    & > div {
+                        background-color: $normal;
+                    }
+
+                    &:hover {
+                        color: $hover;
+
+                        & > div {
+                            background-color: $hover;
+                        }
+                    }
+                }
+            }
+
+            &__readonly {
+                .input-file--tags-content--multiple-value__content,
+                .input-file--tags-content--multiple-value__content-hide,
+                .input-file--tags-content--multiple-value__content-count-hide {
+                    & > div {
+                        color: $font-color_readonly;
+
+                        & > div {
+                            display: none;
+                        }
+
+                        &:hover {
+                            color: $font-color_readonly;
+
+                            & > div {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__disabled {
+                .input-file--tags-content--multiple-value__content,
+                .input-file--tags-content--multiple-value__content-hide,
+                .input-file--tags-content--multiple-value__content-count-hide {
+                    & > div {
+                        color: $font-color_disable;
+
+                        & > div {
+                            display: none;
+                        }
+
+                        &:hover {
+                            color: $font-color_disable;
+
+                            & > div {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &--date-picker {
+        .mx-input-wrapper {
+            & > input {
+                border: 1px solid var(--input-border_normal) !important;
+                color: $normal !important;
+            }
+        }
+
+        &__readonly {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_readonly) !important;
+                    background-color: $readonly !important;
+                    color: $font-color-readonly !important;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &__disabled {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_disable) !important;
+                    background-color: $disable !important;
+                    color: $font-color_disable !important;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &__error {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_error) !important;
+                    color: $error !important;
+                }
+            }
+        }
+
+        &__has-content {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_active) !important;
+                    color: $active !important;
+                }
+            }
+        }
+
+        &__focus {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_focus) !important;
+                    color: $focus !important;
+                }
+            }
+        }
+
+        &__hover {
+            .mx-input-wrapper {
+                & > input {
+                    border: 1px solid var(--input-border_hover) !important;
+                    color: $hover !important;
+                }
+            }
+        }
+    }
+
+    &--error-message {
+        color: $error;
+    }
+
+    &--resizer {
+        &__readonly {
+            background-color: $readonly;
+        }
+
+        &__disabled {
+            background-color: $disable;
+        }
+    }
+
+    &--count {
+        &__readonly {
+            background-color: $readonly;
+        }
+
+        &__disabled {
+            background-color: $disable;
+        }
+    }
+
+    &--display {
+        border: 1px solid $normal;
+        color: $normal;
+
+        &__readonly {
+            border: 1px solid $readonly;
+            background-color: $readonly;
+
+            &-text {
+                color: $font-color-readonly;
+            }
+        }
+
+        &__disabled {
+            border: 1px solid $disable;
+            background-color: $disable;
+
+            &-text {
+                color: $font-color_disable;
+            }
+        }
+
+        &__error {
+            border: 1px solid $error;
+
+            &-text {
+                color: $error;
+            }
+        }
+
+        &__has-content {
+            border: 1px solid $active;
+
+            &-text {
+                color: $active;
+            }
+        }
+
+        &__focus {
+            border: 1px solid $focus;
+
+            &-text {
+                color: $focus;
+            }
+        }
+
+        &__hover {
+            border: 1px solid $hover;
+
+            &-text {
+                color: $hover;
+            }
+        }
+    }
+}
+
+// input datetime
+@mixin input-datetime-picker-popup(
+    $border,
+    $text,
+    $normal,
+    $hover,
+    $active,
+    $range,
+    $range-text,
+    $cell-not-current-month,
+    $today,
+    $time-active,
+    $time-active-text
+) {
+    &-datepicker {
+        &-popup {
+            border: 1px solid $border !important;
+        }
+
+        &-footer {
+            border-top: 1px solid $border !important;
+        }
+    }
+
+    &-calendar {
+        &-content {
+            .cell {
+                color: $text !important;
+
+                &:hover {
+                    background-color: transparent !important ;
+                    color: $hover !important;
+                }
+
+                &.active {
+                    background-color: $active !important;
+                    color: var(--color-white) !important;
+                }
+
+                &.in-range {
+                    background-color: $range !important;
+                    color: $range-text !important;
+                }
+
+                &.not-current-month {
+                    color: $cell-not-current-month !important;
+                }
+            }
+        }
+    }
+
+    &-btn {
+        color: $normal;
+
+        :hover {
+            color: $hover;
+        }
+
+        :active {
+            color: $active;
+        }
+    }
+
+    &-table {
+        th {
+            color: $text;
+        }
+
+        &-date {
+            .today {
+                color: $today !important;
+            }
+        }
+    }
+
+    &-active-week {
+        background-color: $range !important;
+    }
+
+    &-time {
+        &-item {
+            color: $text !important;
+
+            &.active {
+                background-color: $time-active !important;
+                color: $time-active-text !important;
+            }
+        }
+
+        & + .mx-time {
+            border-color: #e3e3e3 !important;
+        }
+    }
+}
+
+// input slider
+@mixin input-slider($normal, $hover, $active, $disable, $error, $focus, $readonly, $font-color_disable, $font-color_readonly, $active_disable) {
+    &-rail {
+        background-color: $normal;
+
+        > .vue-slider-mark-step {
+            background-color: $normal;
+        }
+    }
+
+    &-process {
+        background-color: $focus;
+
+        > .vue-slider-mark-step {
+            background-color: $focus;
+        }
+    }
+
+    &-mark {
+        background-color: unset;
+
+        &-step {
+            background-color: unset;
+        }
+
+        &-label {
+            color: $normal;
+        }
+    }
+
+    &-dot-handle {
+        border: 1px solid $normal;
+    }
+
+    &__focus {
+        .vue-slider-dot-handle {
+            border: 1px solid $focus;
+        }
+    }
+
+    &__hover {
+        .vue-slider-dot-handle {
+            border: 1px solid $hover;
+        }
+    }
+
+    &__disabled {
+        .vue-slider-dot-handle-disabled {
+            background-color: $font-color_disable;
+        }
+
+        .vue-slider-rail {
+            background-color: $disable;
+        }
+
+        .vue-slider-process {
+            background-color: $active_disable;
+        }
+
+        .vue-slider-mark-label {
+            color: $font-color_disable;
+        }
+
+        .vue-slider-dot-handle {
+            border: none;
+        }
+    }
+
+    &__readonly {
+        .vue-slider-dot-handle {
+            background-color: $font-color_disable;
+        }
+
+        .vue-slider-rail {
+            background-color: $disable;
+        }
+
+        .vue-slider-process {
+            background-color: $active_disable;
+        }
+
+        .vue-slider-mark-label {
+            color: $font-color_readonly;
+        }
+
+        .vue-slider-dot-handle {
+            border: none;
+        }
+    }
+}
+
+// dropdown select
+@mixin text-dropdown-select($normal, $hover, $active, $disable, $error, $focus, $readonly, $font-color_disable, $font-color_readonly) {
+    &--tags {
+        background-color: transparent;
+
+        &__readonly {
+            color: $font-color-readonly;
+        }
+
+        &__disabled {
+            color: $font-color_disable;
+        }
+
+        &__error {
+            color: $error;
+        }
+
+        &__has-content {
+            color: $active;
+        }
+
+        &__focus {
+            color: $focus;
+        }
+
+        &__hover {
+            color: $hover;
+        }
+
+        &-icon {
+            &:before {
+                background-color: $normal;
+            }
+
+            &:after {
+                background-color: $normal;
+            }
+
+            &__readonly {
+                &:before {
+                    background-color: $font-color_disable;
+                }
+
+                &:after {
+                    background-color: $font-color_disable;
+                }
+            }
+
+            &__disabled {
+                cursor: not-allowed;
+
+                &:before {
+                    background-color: $font-color_disable;
+                }
+
+                &:after {
+                    background-color: $font-color_disable;
+                }
+            }
+
+            &__error {
+                &:before {
+                    background-color: $error;
+                }
+
+                &:after {
+                    background-color: $error;
+                }
+            }
+
+            &__has-content {
+                &:before {
+                    background-color: $active;
+                }
+
+                &:after {
+                    background-color: $active;
+                }
+            }
+
+            &__focus {
+                &:before {
+                    background-color: $focus;
+                }
+
+                &:after {
+                    background-color: $focus;
+                }
+            }
+
+            &__hover {
+                &:before {
+                    background-color: $hover;
+                }
+
+                &:after {
+                    background-color: $hover;
+                }
+            }
+        }
+    }
+
+    &--tags-content {
+        &--placeholder {
+            color: $normal;
+        }
+    }
+
+    &--error-message {
+        color: $error;
+    }
+}
+
+@mixin outline-dropdown-select($normal, $hover, $active, $disable, $error, $focus, $readonly, $font-color_disable, $font-color_readonly) {
+    &--tags {
+        background-color: #ffffff;
+        border: 1px solid var(--dropdown-select-border_normal);
+
+        &__readonly {
+            color: $font-color-readonly;
+            background-color: $readonly;
+            border: 1px solid var(--dropdown-select-border_readonly);
+        }
+
+        &__disabled {
+            color: $font-color-disable;
+            background-color: $disable;
+            border: 1px solid var(--dropdown-select-border_disable);
+        }
+
+        &__error {
+            color: $error;
+            border: 1px solid var(--dropdown-select-border_error);
+        }
+
+        &__has-content {
+            color: $active;
+            border: 1px solid var(--dropdown-select-border_active);
+        }
+
+        &__focus {
+            color: $focus;
+            border: 1px solid var(--dropdown-select-border_focus);
+        }
+
+        &__hover {
+            color: $hover;
+            border: 1px solid var(--dropdown-select-border_hover);
+        }
+
+        &-icon {
+            &:before {
+                background-color: $normal;
+            }
+
+            &:after {
+                background-color: $normal;
+            }
+
+            &__readonly {
+                &:before {
+                    background-color: $font-color_disable;
+                }
+
+                &:after {
+                    background-color: $font-color_disable;
+                }
+            }
+
+            &__disabled {
+                cursor: not-allowed;
+
+                &:before {
+                    background-color: $font-color_disable;
+                }
+
+                &:after {
+                    background-color: $font-color_disable;
+                }
+            }
+
+            &__error {
+                &:before {
+                    background-color: $error;
+                }
+
+                &:after {
+                    background-color: $error;
+                }
+            }
+
+            &__has-content {
+                &:before {
+                    background-color: $active;
+                }
+
+                &:after {
+                    background-color: $active;
+                }
+            }
+
+            &__focus {
+                &:before {
+                    background-color: $focus;
+                }
+
+                &:after {
+                    background-color: $focus;
+                }
+            }
+
+            &__hover {
+                &:before {
+                    background-color: $hover;
+                }
+
+                &:after {
+                    background-color: $hover;
+                }
+            }
+        }
+    }
+
+    &--tags-content {
+        &--placeholder {
+            color: $normal;
+        }
+
+        &--multiple-value {
+            .dropdown-select--tags-content--multiple-value__content,
+            .dropdown-select--tags-content--multiple-value__content-hide,
+            .dropdown-select--tags-content--multiple-value__content-count,
+            .dropdown-select--tags-content--multiple-value__content-count-hide {
+                & > div {
+                    color: $active;
+                    background-color: #e2effd;
+
+                    & > div {
+                        background-color: $active;
+                    }
+
+                    &:hover {
+                        color: $hover;
+
+                        & > div {
+                            background-color: $hover;
+                        }
+                    }
+                }
+            }
+
+            &__readonly {
+                .dropdown-select--tags-content--multiple-value__content,
+                .dropdown-select--tags-content--multiple-value__content-hide,
+                .dropdown-select--tags-content--multiple-value__content-count,
+                .dropdown-select--tags-content--multiple-value__content-count-hide {
+                    & > div {
+                        color: $font-color_readonly;
+
+                        & > div {
+                            display: none;
+                        }
+
+                        &:hover {
+                            color: $font-color_readonly;
+
+                            & > div {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__disabled {
+                .dropdown-select--tags-content--multiple-value__content,
+                .dropdown-select--tags-content--multiple-value__content-hide,
+                .dropdown-select--tags-content--multiple-value__content-count,
+                .dropdown-select--tags-content--multiple-value__content-count-hide {
+                    & > div {
+                        color: $font-color_disable;
+
+                        & > div {
+                            display: none;
+                        }
+
+                        &:hover {
+                            color: $font-color_disable;
+
+                            & > div {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &--error-message {
+        color: $error;
+    }
+}
+
+@mixin icon-dropdown-select($normal, $hover, $active, $disable, $error, $focus, $readonly, $font-color_disable, $font-color_readonly) {
+    &--error-message {
+        color: $error;
+    }
+}
